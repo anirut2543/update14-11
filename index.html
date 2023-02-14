@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>learn Boost</title>
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="masthead" style="background-image: url('./img/KV.png');">
+    <div class="container-fluid">
+
+        <center><button type="button" class="bt" onclick="openloadup()">Start</button></center>
+        <center><button type="button" class="bt2" onclick="openPopup()">Rules</button></center>
+
+        
+            <div class="loadup" id="loadup">
+                <div class="loading02" id="loadup">
+                    <div class="text02">Loading</div>
+                     <label class="percent02">100%</label>
+                    <div class="progress-bar02">
+                      <div class="progress02"></div>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="mapup" id="mapup">
+                <img class="map" src="img/map.png" alt="">
+                <div class="qr"><img class="qrmap" src="img/qrmap.png" alt="">
+                <button class="ton1">QUIZ</button>
+                <button class="ton2">Ads</button>
+                <button class="ton3" onclick="openPopup()">Rules</button></div>
+                <div class="dice">
+                <span id="output" class="ss">3</span>
+                <button type="submit" class="bt4" id="dic" onclick="toy()">Toy</button>
+            </div>
+            </div>
+
+        <div class="container-fluid">
+            <div class="popup" id="popup">
+            <img src="image/ruller5.png" alt="">
+            <h1>Hello</h1>
+            <p>1. Mix 110 tiles face down. Pick 15 tiles per player.<br>
+                2. Place the remaining ones into the middle of the table, the "Dum-Mee". More tiles can be retrieved only if a sum <br>
+                3. Who goes first can be creative. For example, start with the youngest player in a clockwise direction. <br>
+                1. Mix 110 tiles face down. Pick 15 tiles per player.<br>
+                1. Mix 110 tiles face down. Pick 15 tiles per player.<br>
+                1. Mix 110 tiles face down. Pick 15 tiles per player.<br>
+                1. Mix 110 tiles face down. Pick 15 tiles per player.<br>
+                1. Mix 110 tiles face down. Pick 15 tiles per player.<br>
+                1. Mix 110 tiles face down. Pick 15 tiles per player.<br>
+                1. Mix 110 tiles face down. Pick 15 tiles per player.<br>
+                1. Mix 110 tiles face down. Pick 15 tiles per player.<br>
+                1. Mix 110 tiles face down. Pick 15 tiles per player.<br>
+                1. Mix 110 tiles face down. Pick 15 tiles per player.<br></p>
+            <button type="button" onclick="closePopup()">OK</button>
+        </div>
+        </div>
+
+    </div>
+    </div>
+    <script>
+        let popup = document.getElementById("popup");
+        let mapup = document.getElementById("mapup");
+        function openPopup(){
+        popup.classList.add("open-popup");
+        }
+        function closePopup(){
+        popup.classList.remove("open-popup");
+        }
+
+        function openmap(){
+        mapup.classList.add("open-mapup");
+        loadup.classList.remove("open-loadup");
+        }
+
+/* load */
+        let loadup = document.getElementById("loadup");
+        function openloadup(){
+        loadup.classList.add("open-loadup");
+        var text = document.querySelector('.text02');
+        var percent = document.querySelector('.percent02');
+        var progress = document.querySelector('.progress02');
+        var count = 4;
+        var per = 16;
+        var loading = setInterval(animate, 50);
+        var number;
+        
+        function animate(){
+        if(count == 100 && per == 400){
+            text.textContent = "Completed";
+            text.style.fontSize = "70px";
+            text.classList.add("add02");
+            clearInterval(loading);
+            per = per + 4;
+            count = count + 1;
+            removeEventListener(openmap())
+            
+            //window.location='QR.html';
+        }else /*if(count == 101 && per == 404){ removeEventListener(closeloadup()) }
+        else*/
+        {
+            per = per + 4;
+            count = count + 1;
+            progress.style.width = per + 'px';
+            percent.textContent = count + '%';
+        }
+        }
+        }
+        function closeloadup(){
+        loadup.classList.remove("open-loadup");
+        }
+       /* function closeloadup(){
+        loadup.classList.remove("open-loadpup");
+        }*/
+/*load*/
+        let dic = document.getElementById("dic");
+
+        function toy(){
+        document.getElementById("output").innerHTML =
+        Math.floor(Math.random() * 6) + 1;
+        }
+
+
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
